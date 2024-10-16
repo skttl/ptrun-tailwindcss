@@ -2,6 +2,7 @@
 
 PowerToys Run plugin which will search and present results from the TailwindCSS documentation.
 
+![explorer_QnnxQYrJYY](https://github.com/user-attachments/assets/10c15c60-e741-4207-b4e9-a594277390c6)
 
 ## Usage
 
