@@ -1,0 +1,57 @@
+name: Build and package for release
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: write
+  
+jobs:
+  build:
+    runs-on: windows-latest
+    
+    env:
+      PRODUCT_NAME: TailwindCSS
+      PROJECT_PATH: src/TailwindCSS/Community.PowerToys.Run.Plugin.TailwindCSS
+      SLN_PATH: src/TailwindCSS/TailwindCSS.sln
+
+    steps:
+
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Extract version from release tag
+      id: extract_version
+      run: |
+        $version = '${{ github.event.release.tag_name }}'
+        echo "VERSION=$version" >> $env:GITHUB_ENV
+      shell: powershell
+        
+    - name: Replace version token in plugin.json
+      run: |
+        (Get-Content '${{ env.PROJECT_PATH }}/plugin.json') -replace '\$\(Version\)', '${{ env.VERSION }}' | Set-Content '${{ env.PROJECT_PATH }}/plugin.json'
+      shell: powershell
+
+    - name: Package
+      run: |
+        dotnet pack ${{ env.SLN_PATH }} -p:Platform=x64 -p:Version=${{ env.VERSION }} 
+        dotnet pack ${{ env.SLN_PATH }} -p:Platform=ARM64 -p:Version=${{ env.VERSION }}
+
+    - name: Upload x64 to Release Action
+      uses: Shopify/upload-to-release@v2.0.0
+      with:
+        name: ${{ env.PRODUCT_NAME }}-${{ env.VERSION }}-x64.zip
+        path: ${{ env.PROJECT_PATH }}/${{ env.PRODUCT_NAME }}-${{ env.VERSION }}-x64.zip
+        content-type: application/zip
+        repo-token: ${{secrets.GITHUB_TOKEN}}
+
+    - name: Upload ARM64 to Release Action
+      uses: Shopify/upload-to-release@v2.0.0
+      with:
+        name: ${{ env.PRODUCT_NAME }}-${{ env.VERSION }}-ARM64.zip
+        path: ${{ env.PROJECT_PATH }}/${{ env.PRODUCT_NAME }}-${{ env.VERSION }}-ARM64.zip
+        content-type: application/zip
+        repo-token: ${{secrets.GITHUB_TOKEN}}

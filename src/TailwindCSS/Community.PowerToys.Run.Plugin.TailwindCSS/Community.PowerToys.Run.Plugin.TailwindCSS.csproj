@@ -1,0 +1,42 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <Platforms>x64;ARM64</Platforms>
+    <PlatformTarget>$(Platform)</PlatformTarget>
+	<Nullable>enable</Nullable>
+	<ProductName>TailwindCSS</ProductName>
+	<EnableDynamicLoading>true</EnableDynamicLoading>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Algolia.Search" Version="7.6.1" IncludeAssets="all" />
+    <PackageReference Include="Community.PowerToys.Run.Plugin.Dependencies" Version="0.82.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="plugin.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Images/*.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+	<Target Name="Movefiles"
+            AfterTargets="Build">
+		<ItemGroup>
+			<MySourceFiles Include="$(OutputPath)**/*" Exclude="$(OutputPath)Wox.*.dll;$(OutputPath)PowerToys.*.dll" />
+		</ItemGroup>
+		<Copy SourceFiles="@(MySourceFiles)"
+			  DestinationFiles="@(MySourceFiles->'./bin/output_$(Version)_$(Platform)/$(ProductName)/%(RecursiveDir)%(Filename)%(Extension)')" />
+	</Target>
+	<Target Name="ZipOutput"
+            AfterTargets="Pack">
+		<ZipDirectory SourceDirectory="./bin/output_$(Version)_$(Platform)"
+                      DestinationFile="./$(ProductName)-$(Version)-$(Platform).zip"
+                      Overwrite="true" />
+	</Target>
+
+</Project>

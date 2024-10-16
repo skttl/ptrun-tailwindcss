@@ -1,0 +1,14 @@
+{
+  "ID": "C300A599B0534FF2942FB26B38CBE2B5",
+  "ActionKeyword": "tw",
+  "IsGlobal": false,
+  "Name": "TailwindCSS",
+  "Author": "skttl",
+  "Version": "$(Version)",
+  "Language": "csharp",
+  "Website": "https://github.com/skttl/ptrun-tailwindcss",
+  "ExecuteFileName": "Community.PowerToys.Run.Plugin.TailwindCSS.dll",
+  "IcoPathDark": "Images\\tailwindcss.dark.png",
+  "IcoPathLight": "Images\\tailwindcss.light.png",
+  "DynamicLoading": true
+}

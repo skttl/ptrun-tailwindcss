@@ -1,0 +1,40 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35027.167
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Community.PowerToys.Run.Plugin.TailwindCSS", "Community.PowerToys.Run.Plugin.TailwindCSS\Community.PowerToys.Run.Plugin.TailwindCSS.csproj", "{AC8CD13A-1120-4B9A-BFD6-4C1CD25D22D9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Community.PowerToys.Run.Plugin.TailwindCSS.UnitTests", "Community.PowerToys.Run.Plugin.TailwindCSS.UnitTests\Community.PowerToys.Run.Plugin.TailwindCSS.UnitTests.csproj", "{A2F36D96-1BE4-4314-9959-E41C0E5BBC45}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|ARM64 = Debug|ARM64
+		Debug|x64 = Debug|x64
+		Release|ARM64 = Release|ARM64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AC8CD13A-1120-4B9A-BFD6-4C1CD25D22D9}.Debug|ARM64.ActiveCfg = Debug|ARM64
+		{AC8CD13A-1120-4B9A-BFD6-4C1CD25D22D9}.Debug|ARM64.Build.0 = Debug|ARM64
+		{AC8CD13A-1120-4B9A-BFD6-4C1CD25D22D9}.Debug|x64.ActiveCfg = Debug|x64
+		{AC8CD13A-1120-4B9A-BFD6-4C1CD25D22D9}.Debug|x64.Build.0 = Debug|x64
+		{AC8CD13A-1120-4B9A-BFD6-4C1CD25D22D9}.Release|ARM64.ActiveCfg = Release|ARM64
+		{AC8CD13A-1120-4B9A-BFD6-4C1CD25D22D9}.Release|ARM64.Build.0 = Release|ARM64
+		{AC8CD13A-1120-4B9A-BFD6-4C1CD25D22D9}.Release|x64.ActiveCfg = Release|x64
+		{AC8CD13A-1120-4B9A-BFD6-4C1CD25D22D9}.Release|x64.Build.0 = Release|x64
+		{A2F36D96-1BE4-4314-9959-E41C0E5BBC45}.Debug|ARM64.ActiveCfg = Debug|ARM64
+		{A2F36D96-1BE4-4314-9959-E41C0E5BBC45}.Debug|ARM64.Build.0 = Debug|ARM64
+		{A2F36D96-1BE4-4314-9959-E41C0E5BBC45}.Debug|x64.ActiveCfg = Debug|x64
+		{A2F36D96-1BE4-4314-9959-E41C0E5BBC45}.Debug|x64.Build.0 = Debug|x64
+		{A2F36D96-1BE4-4314-9959-E41C0E5BBC45}.Release|ARM64.ActiveCfg = Release|ARM64
+		{A2F36D96-1BE4-4314-9959-E41C0E5BBC45}.Release|ARM64.Build.0 = Release|ARM64
+		{A2F36D96-1BE4-4314-9959-E41C0E5BBC45}.Release|x64.ActiveCfg = Release|x64
+		{A2F36D96-1BE4-4314-9959-E41C0E5BBC45}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {25EB4A71-F3C6-443E-A0AF-5F8EF49FDB8A}
+	EndGlobalSection
+EndGlobal
