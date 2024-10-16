@@ -27,7 +27,7 @@
 	<Target Name="Movefiles"
             AfterTargets="Build">
 		<ItemGroup>
-			<MySourceFiles Include="$(OutputPath)**/*" Exclude="$(OutputPath)Wox.*.dll;$(OutputPath)PowerToys.*.dll" />
+			<MySourceFiles Include="$(OutputPath)**/*" Exclude="$(OutputPath)Wox.*.dll;$(OutputPath)PowerToys.*.dll;$(OutputPath)Microsoft.Extensions.*.dll;$(OutputPath)System.Text.Json.dll" />
 		</ItemGroup>
 		<Copy SourceFiles="@(MySourceFiles)"
 			  DestinationFiles="@(MySourceFiles->'./bin/output_$(Version)_$(Platform)/$(ProductName)/%(RecursiveDir)%(Filename)%(Extension)')" />
