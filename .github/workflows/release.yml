@@ -55,3 +55,26 @@ jobs:
         path: ${{ env.PROJECT_PATH }}/${{ env.PRODUCT_NAME }}-${{ env.VERSION }}-ARM64.zip
         content-type: application/zip
         repo-token: ${{secrets.GITHUB_TOKEN}}
+
+
+    # Step to calculate SHA256 for the two files
+    - name: Calculate SHA-256 Hash for x64 and ARM64
+      id: calculate_sha
+      run: |
+        $x64_hash = Get-FileHash -Path "${{ env.PROJECT_PATH }}/${{ env.PRODUCT_NAME }}-${{ env.VERSION }}-x64.zip" -Algorithm SHA256 | Select-Object -ExpandProperty Hash
+        $arm64_hash = Get-FileHash -Path "${{ env.PROJECT_PATH }}/${{ env.PRODUCT_NAME }}-${{ env.VERSION }}-ARM64.zip" -Algorithm SHA256 | Select-Object -ExpandProperty Hash
+        echo "x64_SHA=$x64_hash" >> $env:GITHUB_ENV
+        echo "ARM64_SHA=$arm64_hash" >> $env:GITHUB_ENV
+      shell: powershell
+      
+    - name: update release
+      id: update_release
+      uses: tubone24/update_release@v1.0
+      env:
+        GITHUB_TOKEN: ${{ github.token }}
+      with:
+        is_append_body: 1
+        body: |
+            ## SHA-256 Hashes:
+            - **x64 Hash**: \`${{ env.x64_SHA }}\`
+            - **ARM64 Hash**: \`${{ env.ARM64_SHA }}\`
