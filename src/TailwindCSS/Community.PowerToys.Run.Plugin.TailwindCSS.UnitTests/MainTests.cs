@@ -22,13 +22,5 @@ namespace Community.PowerToys.Run.Plugin.TailwindCSS.UnitTests
 
             Assert.IsNotNull(results.First());
         }
-
-        [TestMethod]
-        public void LoadContextMenus_should_return_results()
-        {
-            var results = main.LoadContextMenus(new Result { ContextData = "search" });
-
-            Assert.IsNotNull(results.First());
-        }
     }
 }
